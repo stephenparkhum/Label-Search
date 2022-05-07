@@ -2,7 +2,6 @@ import { Container } from '@mui/material';
 import Main from './components/Main';
 import { createContext, useState } from 'react';
 import data from './data/data';
-import { genres, getGenres } from './firebaseSetup';
 
 function App() {
   const DataContext = createContext(data);

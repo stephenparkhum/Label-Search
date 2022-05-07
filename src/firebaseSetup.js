@@ -9,12 +9,6 @@ const db = firebaseApp.database();
 
 // Main Data here
 const genresRef = db.ref('/genres');
+const labelsRef = db.ref('/labels');
 
-const genres = genresRef.once('value').then((snapshot) => snapshot.val());
-
-async function getGenres() {
-  let result = await genresRef.once('value');
-  return result;
-}
-
-export { genresRef, genres, getGenres };
+export { genresRef, labelsRef };
