@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Container } from '@mui/material';
+import Main from './components/Main';
+import { createContext, useState } from 'react';
+import data from './data/data';
 
 function App() {
+  const DataContext = createContext(data);
+  const [selectedGenre, setSelectedGenre] = useState('all');
+
+  const onClickUpdate = (val: string): void => {
+    setSelectedGenre(val);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataContext.Provider value={data}>
+      <div className="App">
+        <header>
+          <Container maxWidth={'md'}>
+            <h1>Label Search</h1>
+          </Container>
+        </header>
+        <main>
+          <Main selectedGenre={selectedGenre} onClickUpdate={onClickUpdate} />
+        </main>
+      </div>
+    </DataContext.Provider>
   );
 }
 
