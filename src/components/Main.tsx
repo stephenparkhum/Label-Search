@@ -1,15 +1,22 @@
 import { Button, ButtonGroup, TextField, Container } from '@mui/material';
-import { FC } from 'react';
-import data from '../data/data';
+import { FC, useEffect, useState } from 'react';
 import LabelList from './LabelList';
-import { MainProps } from '../types/types';
-import { db } from '../firebaseSetup';
+import { Genres, MainProps } from '../types/types';
+import { genresRef } from '../firebaseSetup';
 
 const Main: FC<MainProps> = ({ selectedGenre, onClickUpdate }) => {
   const appMaxWidth = 'md';
-  const { genres } = data;
+  const [genres, setGenres] = useState<Genres[]>([]);
 
-  console.log(db);
+  useEffect(() => {
+    genresRef.on('value', (snapshot) => {
+      let allGenres: Genres[] = [];
+      snapshot.forEach((snap) => {
+        allGenres.push(snap.val());
+      });
+      setGenres(allGenres);
+    });
+  }, []);
 
   const cleanGenreDisplayText = (val: string | null) => {
     if (val !== null) {
