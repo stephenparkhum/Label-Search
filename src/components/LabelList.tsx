@@ -1,10 +1,20 @@
-import { FC, useEffect } from 'react';
-import data from '../data/data';
+import { FC, useEffect, useState } from 'react';
+import { labelsRef } from '../firebaseSetup';
 import { Label, LabelListProps } from '../types/types';
 import LabelCard from './LabelCard';
 
 const LabelList: FC<LabelListProps> = ({ selectedGenre }) => {
-  const { labels } = data;
+  const [labels, setLabels] = useState<Label[]>([]);
+
+  useEffect(() => {
+    labelsRef.on('value', (snapshot) => {
+      let allLabels: Label[] = [];
+      snapshot.forEach((snap) => {
+        allLabels.push(snap.val());
+      });
+      setLabels(allLabels);
+    });
+  }, []);
 
   useEffect(() => {}, [selectedGenre]);
 
