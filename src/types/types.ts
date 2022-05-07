@@ -20,6 +20,7 @@ export interface Data {
 }
 
 export interface LabelCardProps {
+  key: string;
   label: Label;
 }
 

@@ -1,6 +1,4 @@
-import firebase from 'firebase';
-
-const config = {
+const firebaseConfig = {
   apiKey: 'AIzaSyAUzZNRUpekXkgt3RRWTsMfDPq6Phjhe4k',
   authDomain: 'label-search-b5008.firebaseapp.com',
   projectId: 'label-search-b5008',
@@ -10,6 +8,4 @@ const config = {
   measurementId: 'G-WDCYVPT604',
 };
 
-firebase.initializeApp(config);
-
-export default firebase;
+export default firebaseConfig;

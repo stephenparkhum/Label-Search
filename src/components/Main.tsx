@@ -3,12 +3,13 @@ import { FC } from 'react';
 import data from '../data/data';
 import LabelList from './LabelList';
 import { MainProps } from '../types/types';
-import firebase from '../firebase';
+import { db } from '../firebaseSetup';
 
 const Main: FC<MainProps> = ({ selectedGenre, onClickUpdate }) => {
   const appMaxWidth = 'md';
   const { genres } = data;
-  console.log(firebase);
+
+  console.log(db);
 
   const cleanGenreDisplayText = (val: string | null) => {
     if (val !== null) {
@@ -22,6 +23,7 @@ const Main: FC<MainProps> = ({ selectedGenre, onClickUpdate }) => {
     return genres.map((genre) => {
       return (
         <Button
+          key={genre.slug}
           variant={selectedGenre === genre.slug ? 'contained' : 'outlined'}
           onClick={(e) => onClickUpdate(cleanGenreDisplayText(e.currentTarget.textContent))}>
           {genre.displayName}

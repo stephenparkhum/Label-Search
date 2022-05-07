@@ -24,7 +24,7 @@ const LabelList: FC<LabelListProps> = ({ selectedGenre }) => {
 
   const displayLabels = () => {
     return filterLabels(labels, selectedGenre).map((label: Label) => {
-      return <LabelCard label={label} />;
+      return <LabelCard key={label.slug} label={label} />;
     });
   };
 
