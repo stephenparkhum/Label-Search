@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, TextField, Container } from '@mui/material';
+import { Button, ButtonGroup, TextField, Container, Typography } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
 import LabelList from './LabelList';
 import { Genres, MainProps } from '../types/types';
@@ -45,13 +45,17 @@ const Main: FC<MainProps> = ({ selectedGenre, onClickUpdate }) => {
         <TextField id="filled-basic" label="Search label..." variant="filled" fullWidth={true} />
       </div>
       <div id="genres-container">
-        <h2>Genres</h2>
+        <Typography>
+          <h2>Genres</h2>
+        </Typography>
         <ButtonGroup variant="outlined" aria-label="outlined button group">
           {displayGenres()}
         </ButtonGroup>
       </div>
       <div id="labels-container">
-        <h2>Labels</h2>
+        <Typography>
+          <h2>Labels</h2>
+        </Typography>
         <LabelList selectedGenre={selectedGenre} />
       </div>
     </Container>

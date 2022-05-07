@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material';
 import Main from './components/Main';
 import { createContext, useState } from 'react';
 import data from './data/data';
@@ -15,12 +15,18 @@ function App() {
     <DataContext.Provider value={data}>
       <div className="App">
         <header>
-          <Container maxWidth={'md'}>
-            <h1>Label Search</h1>
-          </Container>
+          <AppBar>
+            <Container maxWidth={'md'}>
+              <Typography variant="h4" component="h4">
+                Label Search
+              </Typography>
+            </Container>
+          </AppBar>
         </header>
         <main>
-          <Main selectedGenre={selectedGenre} onClickUpdate={onClickUpdate} />
+          <Box mt={10}>
+            <Main selectedGenre={selectedGenre} onClickUpdate={onClickUpdate} />
+          </Box>
         </main>
       </div>
     </DataContext.Provider>
