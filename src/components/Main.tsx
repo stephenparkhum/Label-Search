@@ -3,10 +3,12 @@ import { FC } from 'react';
 import data from '../data/data';
 import LabelList from './LabelList';
 import { MainProps } from '../types/types';
+import firebase from '../firebase';
 
 const Main: FC<MainProps> = ({ selectedGenre, onClickUpdate }) => {
   const appMaxWidth = 'md';
   const { genres } = data;
+  console.log(firebase);
 
   const cleanGenreDisplayText = (val: string | null) => {
     if (val !== null) {
