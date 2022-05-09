@@ -32,3 +32,12 @@ export interface MainProps {
   selectedGenre: string;
   onClickUpdate(val: any): void;
 }
+
+export interface AdminAddLabelProps {
+  genres: Genres[];
+}
+
+export interface InputFields {
+  display: string;
+  machineName: string;
+}
