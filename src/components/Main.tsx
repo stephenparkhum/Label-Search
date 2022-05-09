@@ -40,10 +40,7 @@ const Main: FC<MainProps> = ({ selectedGenre, onClickUpdate }) => {
   };
 
   return (
-    <Container maxWidth={appMaxWidth}>
-      {/* <div id="search-container">
-        <TextField id="filled-basic" label="Search label..." variant="filled" fullWidth={true} />
-      </div> */}
+    <>
       <div id="genres-container">
         <Typography>
           <h2>Genres</h2>
@@ -58,7 +55,7 @@ const Main: FC<MainProps> = ({ selectedGenre, onClickUpdate }) => {
         </Typography>
         <LabelList selectedGenre={selectedGenre} />
       </div>
-    </Container>
+    </>
   );
 };
 

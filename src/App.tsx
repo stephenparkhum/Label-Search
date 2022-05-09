@@ -1,9 +1,14 @@
-import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import Main from './components/Main';
 import { createContext, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
 
 import data from './data/data';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Header from './components/Header';
+import Admin from './components/Admin';
+import { ScopedCssBaseline } from '@mui/material';
 
 const darkTheme = createTheme({
   palette: {
@@ -20,26 +25,32 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <DataContext.Provider value={data}>
-        <div className="App" style={{ backgroundColor: 'dark' }}>
-          <header>
-            <AppBar>
+    <BrowserRouter>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline enableColorScheme={true} />
+        <DataContext.Provider value={data}>
+          <div className="App" style={{ backgroundColor: 'dark' }}>
+            <header>
+              <Header />
+            </header>
+            <main>
               <Container maxWidth={'md'}>
-                <Typography variant="h4" component="h4">
-                  Label Search
-                </Typography>
+                <Box sx={{ mt: 10 }}>
+                  <Routes>
+                    <Route
+                      path="/"
+                      element={
+                        <Main selectedGenre={selectedGenre} onClickUpdate={onClickUpdate} />
+                      }></Route>
+                    <Route path="admin" element={<Admin />} />
+                  </Routes>
+                </Box>
               </Container>
-            </AppBar>
-          </header>
-          <main>
-            <Box mt={10}>
-              <Main selectedGenre={selectedGenre} onClickUpdate={onClickUpdate} />
-            </Box>
-          </main>
-        </div>
-      </DataContext.Provider>
-    </ThemeProvider>
+            </main>
+          </div>
+        </DataContext.Provider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
