@@ -1,13 +1,48 @@
-import { Typography, TextField } from '@mui/material';
+import { Typography, MenuItem, Box, TextField, Select } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { genresRef } from '../firebaseSetup';
+import { Genres } from '../types/types';
 
 const Admin = () => {
+  const [genreChoice, setGenreChoice] = useState();
+  const [genres, setGenres] = useState<Genres[]>([]);
+
+  useEffect(() => {
+    genresRef.on('value', (snapshot) => {
+      let allGenres: Genres[] = [];
+      snapshot.forEach((snap) => {
+        allGenres.push(snap.val());
+      });
+      setGenres(allGenres);
+    });
+  }, []);
+
+  const displayGenres = () => {
+    return genres.map((genre) => {
+      return <MenuItem value={genre.slug}>{genre.displayName}</MenuItem>;
+    });
+  };
+
   return (
     <div>
-      <Typography>Admin Page</Typography>
-      <div id="admin-login">
-        <TextField id="filled-basic" label="Display Name" variant="filled" />
-        <TextField id="filled-basic" label="Slug" variant="filled" />
-        <TextField id="filled-basic" label="Tits" variant="filled" />
+      <div id="admin-header">
+        <Typography>Admin Page</Typography>
+      </div>
+      <div id="admin-body">
+        <div id="admin-body--form">
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <TextField id="filled-basic" label="Label Name" variant="filled" />
+            <TextField id="filled-basic" label="Email" variant="filled" />
+            <TextField id="filled-basic" label="Website" variant="filled" />
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={genreChoice}
+              label="Genres">
+              {displayGenres()}
+            </Select>
+          </Box>
+        </div>
       </div>
     </div>
   );

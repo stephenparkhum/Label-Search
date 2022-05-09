@@ -5,7 +5,6 @@ import { Genres, MainProps } from '../types/types';
 import { genresRef } from '../firebaseSetup';
 
 const Main: FC<MainProps> = ({ selectedGenre, onClickUpdate }) => {
-  const appMaxWidth = 'md';
   const [genres, setGenres] = useState<Genres[]>([]);
 
   useEffect(() => {
