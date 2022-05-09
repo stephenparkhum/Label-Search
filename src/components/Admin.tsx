@@ -1,4 +1,4 @@
-import { Typography, MenuItem, Box, TextField, Select } from '@mui/material';
+import { Typography, MenuItem, Box, TextField, Select, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { genresRef } from '../firebaseSetup';
 import { Genres } from '../types/types';
@@ -43,6 +43,16 @@ const Admin = () => {
             </Select>
           </Box>
         </div>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            mt: 2,
+          }}>
+          <Button variant="contained">Submit</Button>
+        </Box>
       </div>
     </div>
   );
