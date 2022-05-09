@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Link } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
 
 const Header = () => {
   return (
@@ -14,9 +15,26 @@ const Header = () => {
             Label Search
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Link to="/">
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  mr: 2,
+                }}>
+                <HomeIcon />
+              </Box>
+            </Link>
             <Link to="/admin">
-              <Typography>Admin</Typography>
-              <SettingsIcon />
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}>
+                <SettingsIcon />
+              </Box>
             </Link>
           </Box>
         </Box>

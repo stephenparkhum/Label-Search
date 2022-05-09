@@ -26,7 +26,7 @@ const Admin = () => {
   return (
     <div>
       <div id="admin-header">
-        <Typography>Admin Page</Typography>
+        <Typography>Add Genre</Typography>
       </div>
       <div id="admin-body">
         <div id="admin-body--form">
