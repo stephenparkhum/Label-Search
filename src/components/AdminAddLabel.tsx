@@ -1,8 +1,16 @@
 import { TextField, Box, Select, Button, MenuItem } from '@mui/material';
 import { Genres, InputFields, AdminAddLabelProps } from '../types/types';
-import { FC } from 'react';
+import { useState, FC } from 'react';
 
 const AdminAddLabel: FC<AdminAddLabelProps> = ({ genres }) => {
+  const [error, setError] = useState('');
+  const [genre, setGenre] = useState({});
+  const [name, setName] = useState('');
+
+  const generateErrorMessage = (val: string) => {
+    return `You must enter a valid ${val}`;
+  };
+
   const displayInputFields = (arr: InputFields[]) => {
     return arr.map((field) => {
       return <TextField id={`${field.machineName}`} label={`${field.display}`} />;

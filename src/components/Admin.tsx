@@ -5,7 +5,6 @@ import { Genres } from '../types/types';
 import AdminAddLabel from './AdminAddLabel';
 
 const Admin = () => {
-  const [genreChoice, setGenreChoice] = useState<string>();
   const [newLabel, setNewLabel] = useState({});
   const [genres, setGenres] = useState<Genres[]>([]);
   const [value, setValue] = useState('');

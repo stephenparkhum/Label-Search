@@ -8,7 +8,6 @@ import data from './data/data';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Header from './components/Header';
 import Admin from './components/Admin';
-import { ScopedCssBaseline } from '@mui/material';
 
 const darkTheme = createTheme({
   palette: {
